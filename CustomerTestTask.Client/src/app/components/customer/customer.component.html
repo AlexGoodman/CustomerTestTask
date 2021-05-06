@@ -1,0 +1,45 @@
+<div>
+    <div>Total count: {{totalCount}}</div>
+    
+    <hr>
+
+    <div class="customer-row">
+        <div class="customer-column">Id</div>
+        <div class="customer-column">Name</div>
+        <div class="customer-column">Age</div>
+    </div>
+
+    <hr>
+
+    <div class="customer-row" *ngFor="let item of itemList">
+        <div class="customer-column">{{item.id}}</div>
+        <div class="customer-column">{{item.name}}</div>
+        <div class="customer-column">{{item.age}}</div>
+    </div>
+
+    <hr>
+    
+    <div class="customer-row">
+        <div class="customer-column"><app-order (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Id'"></app-order></div>
+        <div class="customer-column"><app-order (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Name'"></app-order></div>
+        <div class="customer-column"><app-order (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Age'"></app-order></div>
+    </div>
+
+    <hr>
+
+    <hr>
+    
+    <div class="customer-row">
+        <div class="customer-column"><app-filter (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Id'"></app-filter ></div>
+        <div class="customer-column"><app-filter [filterType]="'text'" (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Name'"></app-filter ></div>
+        <div class="customer-column"><app-filter (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Age'"></app-filter ></div>
+    </div>
+
+    <hr>
+
+    <div>
+        <button (click)="changePage(-1)" type="button" [disabled]="offset <= 0">Prev</button>
+        <div style="text-align: center; display: inline-block; margin: auto 10px; width: 30px;">{{offset / limit + 1}}</div>
+        <button (click)="changePage(1)" type="button" [disabled]="offset >= totalCount - limit">Next</button>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div style="display: inline-block;">
+    <select [formControl]="operatorSelect">          
+        <option *ngFor="let operator of operatorList" value="{{operator}}">
+            {{operator}}
+        </option>                       
+    </select>
+    <input style="width: 50px; margin-left: 10px;" [type]="filterType" [formControl]="filterInput">
+</div>
