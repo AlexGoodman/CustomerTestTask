@@ -34,10 +34,15 @@ export class OrderItem {
         this._customOperator = customOperator;
     }
     
-    public Json(): string {
+    public json(): string {
         return JSON.stringify({
             name: this.name,
             customOperator: this.customOperator
         });
+    }
+
+    public static fromJson(stringValue: string): OrderItem {
+        const object: any = JSON.parse(stringValue);
+        return new OrderItem(object['name'], object['customOperator']); 
     }
 }

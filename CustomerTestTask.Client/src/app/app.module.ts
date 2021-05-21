@@ -9,6 +9,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { ApiService } from './services/api.service';
 import { OrderComponent } from './components/order/order.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { UrlQueryService } from './services/url-query.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { FilterComponent } from './components/filter/filter.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, UrlQueryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

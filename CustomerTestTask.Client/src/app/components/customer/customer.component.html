@@ -20,9 +20,9 @@
     <hr>
     
     <div class="customer-row">
-        <div class="customer-column"><app-order (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Id'"></app-order></div>
-        <div class="customer-column"><app-order (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Name'"></app-order></div>
-        <div class="customer-column"><app-order (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Age'"></app-order></div>
+        <div class="customer-column"><app-order [outerOrderItem]="getOrder('Id')" (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Id'"></app-order></div>
+        <div class="customer-column"><app-order [outerOrderItem]="getOrder('Name')" (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Name'"></app-order></div>
+        <div class="customer-column"><app-order [outerOrderItem]="getOrder('Age')" (removeItem)="changeOrder(null, $event)" (addItem)="changeOrder($event, $event.name)" [name]="'Age'"></app-order></div>
     </div>
 
     <hr>
@@ -30,9 +30,9 @@
     <hr>
     
     <div class="customer-row">
-        <div class="customer-column"><app-filter (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Id'"></app-filter ></div>
-        <div class="customer-column"><app-filter [filterType]="'text'" (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Name'"></app-filter ></div>
-        <div class="customer-column"><app-filter (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Age'"></app-filter ></div>
+        <div class="customer-column"><app-filter [outerFilterItem]="getFilter('Id')" (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Id'"></app-filter ></div>
+        <div class="customer-column"><app-filter [outerFilterItem]="getFilter('Name')" [filterType]="'text'" (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Name'"></app-filter ></div>
+        <div class="customer-column"><app-filter [outerFilterItem]="getFilter('Age')" (removeItem)="changeFilter(null, $event)" (addItem)="changeFilter($event, $event.name)" [name]="'Age'"></app-filter ></div>
     </div>
 
     <hr>

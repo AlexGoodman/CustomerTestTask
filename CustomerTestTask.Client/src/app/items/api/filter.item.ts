@@ -45,11 +45,16 @@ export class FilterItem {
         this._value = value;
     }
 
-    public Json(): string {
+    public json(): string {
         return JSON.stringify({
             name: this.name,
             customOperator: this.customOperator,
             value: this.value
         });
+    }
+
+    public static fromJson(stringValue: string): FilterItem {
+        const object: any = JSON.parse(stringValue);
+        return new FilterItem(object['name'], object['customOperator'], object['value']); 
     }
 }

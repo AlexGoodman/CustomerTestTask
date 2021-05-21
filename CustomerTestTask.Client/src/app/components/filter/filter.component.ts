@@ -12,11 +12,12 @@ export class FilterComponent implements OnInit {
 
   @Input() name: string = '';      
   @Input() filterType: string = 'number';      
+  @Input() outerFilterItem: FilterItem|null = null;      
   @Output() addItem: EventEmitter<FilterItem> = new EventEmitter<FilterItem>();
   @Output() removeItem: EventEmitter<string> = new EventEmitter<string>();
   public operatorList: string[] = FilterItem.OPERATOR_LIST;
   public operatorSelect!: FormControl;
-  public filterInput: FormControl = new FormControl('');
+  public filterInput!: FormControl;
   
   constructor() {}
 
@@ -24,7 +25,9 @@ export class FilterComponent implements OnInit {
     this.operatorList = this.filterType === 'number'
       ? FilterItem.OPERATOR_LIST.filter(o => o !== 'contains')
       : ['contains', '==', '!='];
-    this.operatorSelect = new FormControl(this.operatorList[0]);
+    
+    this.operatorSelect = new FormControl(this.outerFilterItem ? this.outerFilterItem.customOperator : this.operatorList[0]);
+    this.filterInput = new FormControl(this.outerFilterItem ? this.outerFilterItem.value : '');
 
     this.operatorSelect.valueChanges.subscribe(() => {      
       if (this.filterInput.value !== '') {

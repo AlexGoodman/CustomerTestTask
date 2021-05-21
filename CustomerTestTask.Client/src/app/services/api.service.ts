@@ -6,9 +6,7 @@ import { FilterItem } from '../items/api/filter.item';
 import { OrderItem } from '../items/api/order.item';
 import { ItemListResource } from '../resources/item-list.resource';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApiService<TItem> {
 
   constructor(private http: HttpClient) { }
@@ -25,11 +23,11 @@ export class ApiService<TItem> {
       .set('offset', offset.toString());
           
     filterItems.forEach(item => {
-      params = params.append("filterItems", item.Json());
+      params = params.append("filterItems", item.json());
     });
     
     orderItems.forEach(item => {
-      params = params.append("orderItems", item.Json());
+      params = params.append("orderItems", item.json());
     });
 
     return this.http.get<ItemListResource<TItem>>(`${environment.apiUrl}${route}`, {params});
